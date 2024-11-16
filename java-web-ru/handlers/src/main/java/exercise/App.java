@@ -10,9 +10,9 @@ public final class App {
         Javalin app = Javalin.create(config ->
                 config.bundledPlugins.enableDevLogging());
         app.get("/phones", context ->
-                context.result(Data.getPhones().toString()));
+                context.json(Data.getPhones()));
         app.get("/domains", context ->
-                context.result(Data.getDomains().toString()));
+                context.json(Data.getDomains()));
         return app;
         // END
     }
