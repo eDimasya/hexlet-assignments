@@ -2,6 +2,7 @@ package exercise;
 
 import io.javalin.Javalin;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -23,7 +24,7 @@ public final class App {
         // BEGIN
         app.get("/companies/{id}", context -> {
             String id = context.pathParam("id");
-            Map<String, String> result = null;
+            Map<String, String> result = new HashMap<>();
             COMPANIES.forEach(company -> {
                 if (Objects.equals(company.get("id"), id)) {
                     result.putAll(company);
