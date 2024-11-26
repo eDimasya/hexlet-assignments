@@ -15,13 +15,13 @@
     <div>
         <label>
             Title
-            <input type="text" name="title" />
+            <input type="text" name="title" value="${page.getTitle()}"/>
         </label>
     </div>
     <div>
         <label>
             Content
-            <textarea name="content">Content</textarea>
+            <textarea name="content">${page.getContent()}</textarea>
         </label>
     </div>
     <input type="submit" value="Add article" />
