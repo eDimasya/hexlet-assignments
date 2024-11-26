@@ -57,8 +57,8 @@ public final class App {
                 ctx.redirect("/articles");
             } catch (ValidationException e) {
                 BuildArticlePage page = new BuildArticlePage(e.getErrors());
-                ctx.status(422)
-                        .render("articles/build.jte", model("page", page));
+                ctx.render("articles/build.jte", model("page", page))
+                        .status(422);
             }
         });
         // END
