@@ -34,8 +34,8 @@ public final class App {
                 ctx.render("users/build.jte"));
 
         app.post("/users", ctx -> {
-            String firstName = ctx.formParam("firstName").toUpperCase();
-            String lastName = ctx.formParam("lastName").toUpperCase();
+            String firstName = StringUtils.capitalize(ctx.formParam("firstName"));
+            String lastName = StringUtils.capitalize(ctx.formParam("lastName"));
             String email = ctx.formParam("email").trim().toLowerCase();
             String password = Security.encrypt(ctx.formParam("password"));
             UserRepository.save(new User(firstName, lastName, email, password));
