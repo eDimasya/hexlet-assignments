@@ -39,8 +39,10 @@ public final class App {
         });
 
         app.post("/articles", ctx -> {
+            String title = ctx.formParam("title");
+            String content = ctx.formParam("content");
             try {
-                String title = ctx.formParamAsClass("title", String.class)
+                title = ctx.formParamAsClass("title", String.class)
                         .check(value ->
                                         value.length() >= 2,
                                 "Название не должно быть короче двух символов")
@@ -48,7 +50,7 @@ public final class App {
                                 !ArticleRepository.existsByTitle(value),
                                 "Статья с таким названием уже существует")
                         .get();
-                String content = ctx.formParamAsClass("content", String.class)
+                content = ctx.formParamAsClass("content", String.class)
                         .check(value ->
                                         value.length() >= 10,
                                 "Статья должна быть не короче 10 символов")
@@ -56,7 +58,7 @@ public final class App {
                 ArticleRepository.save(new Article(title, content));
                 ctx.redirect("/articles");
             } catch (ValidationException e) {
-                BuildArticlePage page = new BuildArticlePage(e.getErrors());
+                BuildArticlePage page = new BuildArticlePage(title, content, e.getErrors());
                 ctx.render("articles/build.jte", model("page", page))
                         .status(422);
             }
