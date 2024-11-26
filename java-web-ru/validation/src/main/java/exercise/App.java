@@ -4,7 +4,6 @@ import io.javalin.Javalin;
 import io.javalin.validation.ValidationError;
 import io.javalin.validation.ValidationException;
 import java.util.List;
-import java.util.Map;
 
 import exercise.model.Article;
 import exercise.dto.articles.ArticlesPage;
@@ -35,7 +34,8 @@ public final class App {
 
         // BEGIN
         app.get("/articles/build", ctx -> {
-            ctx.render("articles/build.jte");
+            BuildArticlePage page = new BuildArticlePage();
+            ctx.render("articles/build.jte", model("page", page));
         });
 
         app.post("/articles", ctx -> {

@@ -1,7 +1,8 @@
 package exercise.dto.articles;
 
-import exercise.model.Article;
 import io.javalin.validation.ValidationError;
+
+import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
 
@@ -16,6 +17,6 @@ import lombok.Getter;
 public class BuildArticlePage {
     private String title;
     private String content;
-    private Map<String, List<ValidationError<Object>>> errors;
+    private Map<String, List<ValidationError<Object>>> errors = new HashMap<>();
 }
 // END
