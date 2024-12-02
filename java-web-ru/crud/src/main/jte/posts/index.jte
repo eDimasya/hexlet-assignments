@@ -18,7 +18,17 @@ content = @`
             </table>
         </main>
         <footer>
-            <p>Page: ${page.getPage()}</p>
+            <tr>
+                <td>
+                    <a href="${NamedRoutes.getPagePath(page.getPage() - 1)}">Page :${page.getPage() - 1}</a>
+                </td>
+                <td>
+                    <a href="${NamedRoutes.getPagePath(page.getPage())}">Page :${page.getPage()}</a>
+                </td>
+                <td>
+                    <a href="${NamedRoutes.getPagePath(page.getPage() + 1)}">Page :${page.getPage() + 1}</a>
+                </td>
+            </tr>
         </footer>
     </div>
 `

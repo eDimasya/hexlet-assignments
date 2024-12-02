@@ -18,8 +18,8 @@ public final class App {
         app.get(NamedRoutes.rootPath(), RootController::index);
 
         // BEGIN
-        app.get(NamedRoutes.getPostsPath(), PostsController::getPosts);
-        app.get(NamedRoutes.getPostPath(), PostsController::getPost);
+        app.get(NamedRoutes.getPostsPath(), PostsController::index);
+        app.get(NamedRoutes.getPostPath(), PostsController::show);
         // END
 
         return app;
