@@ -29,9 +29,11 @@ public final class App {
         app.post(NamedRoutes.postPath("{id}"), PostsController::update);
 
         // BEGIN
-        app.after(ctx ->
-                ctx.header("X-Response-Digest",
-                        DigestUtils.sha256Hex(ctx.body())));
+        app.after(ctx -> {
+            var body = ctx.result();
+            ctx.header("X-Response-Digest",
+                    DigestUtils.sha256Hex(body));
+        });
         // END
 
         return app;
