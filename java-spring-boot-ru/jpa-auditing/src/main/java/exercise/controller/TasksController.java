@@ -48,7 +48,8 @@ public class TasksController {
 
     @PutMapping("{id}")
     public Task update(@PathVariable Long id, @RequestBody Task data) {
-        Task task = taskRepository.findById(data.getId()).orElseThrow(() -> new ResourceNotFoundException("Task with id" + data.getId() + "not found"));
+        Task task = taskRepository.findById(data.getId()).orElseThrow(() ->
+                new ResourceNotFoundException("Task with id" + data.getId() + "not found"));
         task.setTitle(data.getTitle());
         task.setDescription(data.getDescription());
         return task;
