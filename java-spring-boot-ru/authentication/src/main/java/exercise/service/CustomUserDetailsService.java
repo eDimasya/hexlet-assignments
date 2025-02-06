@@ -25,10 +25,11 @@ public class CustomUserDetailsService implements UserDetailsManager {
 
     @Override
     public void createUser(UserDetails userData) {
-        User user = new User();
+        /*User user = new User();
         user.setEmail(userData.getUsername());
         user.setPasswordDigest(passwordEncoder.encode(userData.getPassword()));
-        userRepository.save(user);
+        userRepository.save(user);*/
+        throw new UnsupportedOperationException("Unimplemented method 'createUser'");
     }
 
     @Override
